@@ -1,6 +1,7 @@
 from ._anvil_designer import Form1Template
 from anvil import *
 import anvil.server
+import datetime
 
 NUMBER_TO_MONTH = {
   1: 'January',
@@ -20,9 +21,9 @@ NUMBER_TO_MONTH = {
 class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
-    self.month = 11
+    self.month = datetime.datetime.now().month
     self.init_components(**properties)
-    self.label_1.txt = self.month_name()
+    self.label_1.text = self.month_name()
     # Any code you write here will run before the form opens.    
   def month_name(self):
     return NUMBER_TO_MONTH[self.month]
