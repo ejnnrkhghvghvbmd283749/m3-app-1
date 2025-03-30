@@ -38,7 +38,7 @@ class Form1(Form1Template):
 
   def week_names(self):
     list_name = []
-    start_of_week = self.current - datetime.timedelta(days=6)
+    start_of_week = self.current - datetime.timedelta(days=self.current.weekday())
     for i in range(7):
       week_name = start_of_week + datetime.timedelta(days=i)
       formatted = week_name.strftime("%A")
@@ -46,7 +46,7 @@ class Form1(Form1Template):
     return("                          ".join(list_name))
   def week_dates(self):
     list_date = []
-    start_of_week = self.current - datetime.timedelta(days=6)
+    start_of_week = self.current - datetime.timedelta(days=self.current.weekday())
     for i in range(7):
       day_date = start_of_week + datetime.timedelta(days=i)
       formatted = day_date.strftime("%d.%m")
