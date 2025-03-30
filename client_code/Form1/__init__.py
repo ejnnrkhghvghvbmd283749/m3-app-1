@@ -2,8 +2,6 @@ from ._anvil_designer import Form1Template
 from anvil import *
 import anvil.server
 import datetime
-import time
-
 NUMBER_TO_MONTH = {
   1: 'January',
   2: 'February',
@@ -21,22 +19,15 @@ NUMBER_TO_MONTH = {
 
 class Form1(Form1Template):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
-    self.month = datetime.datetime.now().month
-    self.now = time.localtime()
-    self.week_num = int(time.strftime("%W")) + 1
+
+    self.current = datetime.datetime.now()
+    self.month = self.current.month
     
-    self.init_components(**properties)
-    
-    self.label_1.text = self.month_name()
+    self.week_num = int(self.current.strftime("%W")) + 1
     self.label_2.text = self.week_number()
     
     self.button_1.set_event_handler('click', self.add_week)
-    self.button_2.set_event_handler('click', self.remove_week)
-    # Any code you write here will run before the form opens.   
-  def setup_calendar(self):
-    print("tulostuu oikeat arvot")
-    
+    self.button_2.set_event_handler('click', self.remove_week)   
   def month_name(self):
     return NUMBER_TO_MONTH[self.month]
     
@@ -44,16 +35,11 @@ class Form1(Form1Template):
     return "Week " + str(self.week_num)
   
   def add_week(self, **event_args):
-    """Decrement the month"""
-    print("oikealle")
-    self.month = (self.month - 2) % 12 + 1
-    self.label_1.text = self.month_name()
+    self.current += datetime.timedelta(weeks=1)
+    self.week_num = int(self.current.strftime("%W")) + 1
     self.label_2.text = self.week_number()
-    
 
   def remove_week(self, **event_args):
-    """Increment the month"""
-    print("vasemmalle")
-    self.month = self.month % 12 + 1
-    self.label_1.text = self.month_name()
+    self.current -= datetime.timedelta(weeks=1)
+    self.week_num = int(self.current.strftime("%W")) + 1
     self.label_2.text = self.week_number()
