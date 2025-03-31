@@ -19,21 +19,14 @@ components:
       name: button_1
       properties: {align: left, icon: 'fa:chevron-right', text: '', visible: true}
       type: Button
-    - components:
-      - data_bindings: []
-        layout_properties: {grid_position: 'KCMVHN,NGYFBI', row_background: 'theme:On Secondary'}
-        name: label_3
-        properties: {align: center}
-        type: Label
-      - data_bindings: []
-        layout_properties: {grid_position: 'BBQCVG,FYSALQ', row_background: 'theme:On Secondary'}
-        name: label_4
-        properties: {align: center}
-        type: Label
-      layout_properties: {grid_position: 'POCIED,INSWVL', row_background: '#c0c0c0'}
-      name: card_1
-      properties: {background: '', border: '', col_spacing: medium, col_widths: '{"OTDWXB":30}', foreground: '', role: card, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
-      type: ColumnPanel
+    - layout_properties: {grid_position: 'SAGSTP,NPUBDD'}
+      name: label_3
+      properties: {align: center, font_size: 16.8}
+      type: Label
+    - layout_properties: {grid_position: 'UNDTMI,QPBCPR'}
+      name: label_4
+      properties: {align: center, font_size: 12, visible: true}
+      type: Label
     layout_properties: {grid_position: 'FOKXIR,HEAXVX'}
     name: column_panel_1
     properties: {}

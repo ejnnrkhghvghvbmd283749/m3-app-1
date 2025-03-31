@@ -19,15 +19,14 @@ NUMBER_TO_MONTH = {
 
 class Form1(Form1Template):
   def __init__(self, **properties):
-
     self.current = datetime.datetime.now()
     self.month = self.current.month
-    
+  
     self.week_num = int(self.current.strftime("%W")) + 1
     self.label_2.text = self.week_number()
     self.label_3.text = self.week_names()
     self.label_4.text = self.week_dates()
-    self.label_4.text = self.week_dates()
+    
     self.button_1.set_event_handler('click', self.add_week)
     self.button_2.set_event_handler('click', self.remove_week)   
   def month_name(self):
@@ -37,13 +36,13 @@ class Form1(Form1Template):
     return "Week " + str(self.week_num)
 
   def week_names(self):
-    list_name = []
+    list_names = []
     start_of_week = self.current - datetime.timedelta(days=self.current.weekday())
     for i in range(7):
       week_name = start_of_week + datetime.timedelta(days=i)
       formatted = week_name.strftime("%A")
-      list_name.append(formatted)
-    return("                          ".join(list_name))
+      list_names.append(formatted)
+    return("                     ".join(list_names))
   def week_dates(self):
     list_date = []
     start_of_week = self.current - datetime.timedelta(days=self.current.weekday())
@@ -51,7 +50,7 @@ class Form1(Form1Template):
       day_date = start_of_week + datetime.timedelta(days=i)
       formatted = day_date.strftime("%d.%m")
       list_date.append(formatted)
-    return("                               ".join(list_date))
+    return("                                       ".join(list_date))
     
   def add_week(self, **event_args):
     self.current += datetime.timedelta(weeks=1)
@@ -66,3 +65,4 @@ class Form1(Form1Template):
     self.label_2.text = self.week_number()
     self.label_3.text = self.week_names()
     self.label_4.text = self.week_dates()
+    
