@@ -19,13 +19,14 @@ NUMBER_TO_MONTH = {
 
 class Form1(Form1Template):
   def __init__(self, **properties):
+    self.column_panel_1.background="#D7DBD3"
     self.current = datetime.datetime.now()
     self.month = self.current.month
   
     self.week_num = int(self.current.strftime("%W")) + 1
     self.label_2.text = self.week_number()
-    self.label_3.text = self.week_names()
-    self.label_4.text = self.week_dates()
+    self.week_names()
+    self.week_dates()
     
     self.button_1.set_event_handler('click', self.add_week)
     self.button_2.set_event_handler('click', self.remove_week)   
@@ -36,34 +37,37 @@ class Form1(Form1Template):
     return "Week " + str(self.week_num)
 
   def week_names(self):
-    list_names = []
+    self.flow_panel_1.clear()
     start_of_week = self.current - datetime.timedelta(days=self.current.weekday())
     for i in range(7):
       week_name = start_of_week + datetime.timedelta(days=i)
       formatted = week_name.strftime("%A")
-      list_names.append(formatted)
-    return("                     ".join(list_names))
-    
+      label = Label(text = formatted, background = "", width="80")
+      self.flow_panel_1.add_component(label, expand="3")
   def week_dates(self):
-    list_date = []
+    self.flow_panel_2.clear()
+    self.flow_panel_3.clear()
     start_of_week = self.current - datetime.timedelta(days=self.current.weekday())
     for i in range(7):
       day_date = start_of_week + datetime.timedelta(days=i)
       formatted = day_date.strftime("%d.%m")
-      list_date.append(formatted)
-    return("                                       ".join(list_date))
+      label = Label(text = formatted, background = "blue", width="80", align="center")
+      text = TextArea(background="white", height="50", align=self.flow_panel_2)
+      self.flow_panel_3.add_component(text, width="5", expand="6")
+      self.flow_panel_2.add_component(label, expand="3")
+    
     
   def add_week(self, **event_args):
     self.current += datetime.timedelta(weeks=1)
     self.week_num = int(self.current.strftime("%W")) + 1
     self.label_2.text = self.week_number()
-    self.label_3.text = self.week_names()
-    self.label_4.text = self.week_dates()
+    self.week_names()
+    self.week_dates()
 
   def remove_week(self, **event_args):
     self.current -= datetime.timedelta(weeks=1)
     self.week_num = int(self.current.strftime("%W")) + 1
     self.label_2.text = self.week_number()
-    self.label_3.text = self.week_names()
-    self.label_4.text = self.week_dates()
+    self.week_names()
+    self.week_dates()
     
