@@ -17,6 +17,18 @@
   text-align: center;
 }
 
+.anvil-role-padded-panel {
+  padding: 30px; 
+}
+.anvil-role-pad-panel {
+  padding-left: 30px;
+}
+.anvil-role-padd-panel {
+  padding-left: 30px;
+}
+.anvil-role-radius-round {
+  border-radius: 35px;
+}
 /* Put things on a 4px grid (none of this 7px nonsense) */
 .has-text .anvil-component-icon.left-icon { margin-right: 8px; }
 .has-text .anvil-component-icon.right-icon { margin-left: 8px; }
