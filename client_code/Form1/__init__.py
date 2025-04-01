@@ -21,7 +21,7 @@ NUMBER_TO_MONTH = {
 
 class Form1(Form1Template):
   def __init__(self, **properties):
-    self.background = "#DAFFCB"
+    self.background = "#F7FBF3"
     self.column_panel_1.background="#D7DBD3"
     self.column_panel_1.role = "radius-round"
     self.current = datetime.datetime.now()
@@ -31,9 +31,11 @@ class Form1(Form1Template):
     self.label_2.text = self.week_number()
     self.week_names()
     self.week_dates()
+    self.notes_format()
     
     self.button_1.set_event_handler('click', self.add_week)
     self.button_2.set_event_handler('click', self.remove_week)   
+    
   def month_name(self):
     return NUMBER_TO_MONTH[self.month]
     
@@ -64,7 +66,12 @@ class Form1(Form1Template):
       text = TextArea(background="white", height="450", align=self.flow_panel_2, margin="15")
       self.flow_panel_3.add_component(text, expand="1")
       self.flow_panel_2.add_component(label, expand="3")
-    
+
+  def notes_format(self):
+    self.column_panel_2.width = "200px"
+    self.column_panel_2.background = "#D7DBD3"
+    self.column_panel_2.role = "radius-round"
+    self.canvas_1.height = "640px"  
     
   def add_week(self, **event_args):
     self.current += datetime.timedelta(weeks=1)
