@@ -50,6 +50,7 @@ class Form1(Form1Template):
       day_date = start_of_week + datetime.timedelta(days=i)
       formatted = day_date.strftime("%d.%m")
       list_date.append(formatted)
+
     return("                                       ".join(list_date))
     
   def add_week(self, **event_args):
