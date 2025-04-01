@@ -43,6 +43,7 @@ class Form1(Form1Template):
       formatted = week_name.strftime("%A")
       list_names.append(formatted)
     return("                     ".join(list_names))
+    
   def week_dates(self):
     list_date = []
     start_of_week = self.current - datetime.timedelta(days=self.current.weekday())
