@@ -1,3 +1,5 @@
+# add the notes panel, and three buttons 
+
 from ._anvil_designer import Form1Template
 from anvil import *
 import anvil.server
