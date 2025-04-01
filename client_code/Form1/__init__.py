@@ -19,6 +19,7 @@ NUMBER_TO_MONTH = {
 
 class Form1(Form1Template):
   def __init__(self, **properties):
+    self.background = "#DAFFCB"
     self.column_panel_1.background="#D7DBD3"
     self.current = datetime.datetime.now()
     self.month = self.current.month
@@ -42,18 +43,20 @@ class Form1(Form1Template):
     for i in range(7):
       week_name = start_of_week + datetime.timedelta(days=i)
       formatted = week_name.strftime("%A")
-      label = Label(text = formatted, background = "", width="80")
+      label = Label(text = formatted, background = "", width="80", align="center")
       self.flow_panel_1.add_component(label, expand="3")
   def week_dates(self):
     self.flow_panel_2.clear()
     self.flow_panel_3.clear()
     start_of_week = self.current - datetime.timedelta(days=self.current.weekday())
+    
     for i in range(7):
       day_date = start_of_week + datetime.timedelta(days=i)
       formatted = day_date.strftime("%d.%m")
-      label = Label(text = formatted, background = "blue", width="80", align="center")
-      text = TextArea(background="white", height="50", align=self.flow_panel_2)
-      self.flow_panel_3.add_component(text, width="5", expand="6")
+      label = Label(text = formatted, background = "", width="80", align="center")
+      #label1 = Label(text ="", background = "white", width="120", align="center")
+      text = TextArea(background="white", height="350", align=self.flow_panel_2)
+      self.flow_panel_3.add_component(text, expand="1")
       self.flow_panel_2.add_component(label, expand="3")
     
     
